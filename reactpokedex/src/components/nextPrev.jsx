@@ -1,4 +1,5 @@
 import React from 'react'
+import "./nextPrev"
 
 export default function nextPrev({next, prev}){
     return(
