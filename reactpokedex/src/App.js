@@ -1,63 +1,54 @@
 import React, { useState, useEffect } from 'react';
-import pokeList from './components/list'
+import PokeList from './components/list';
+import NextPrev from './components/nextPrev'
 
 function App(){
-  const [pokemon, setPokemon] = useState([])
+  const [pokemonList, setPokemon] = useState([]);
   const [currPage, setCurrPage] = useState("https://pokeapi.co/api/v2/pokemon")
-  const [nextPage, setnextPage] = useState()
-  const [prevPage, setPrevPage] = useState()
+  const [nextPage, setnextPage] = useState("")
+  const [prevPage, setPrevPage] = useState("")
   
 
   useEffect(()=> {
-    const pokeURL = "https://pokeapi.co/api/v2/pokemon"
-    // getPokemon(pokeURL)
+    // const pokeURL = "https://pokeapi.co/api/v2/pokemon"
 
     const getPokemon = async() => {
-    const res = await fetch(pokeURL);
-    const data = await res.json();
-    const pokeData = await Promise.all(data.results.map(async (result) =>{
-      const pokeRes = await fetch(results.url);
-      return pokeRes.json();
-    }));
-    setPokemon(pokeData);
+      const res = await fetch(currPage);
+      const data = await res.json();
+      setnextPage(data.next);
+      setPrevPage(data.previous);
+      const pokeData = await Promise.all(data.results.map(async (result) =>{
+        const pokeRes = await fetch(result.url);
+        return pokeRes.json();
+      }));
+      setPokemon(pokeData);
     // const { pokemon } = data;
-    }
-
-    // const getPokemonImg = async() => {
-    //   const res = await fetch("https://pokeapi.co/api/v2/pokemon/${pokemon.name}");
-    //   const data = await res.json();
-    //   const { sprite } = data;
-    //   }
-
-  },[]);
+    };
+    getPokemon();
+  },[currPage]);
 
 
-  function addTeam(){
-    //uhhhhh
-  }
+ 
 
-  function next(){
-    setCurrPage(nextPage)
-  }
+  const next = () => setCurrPage(nextPage);
 
-  function prev(){
-    setPrevPage(prevPage)
-  }
+  const prev = () => setCurrPage(prevPage);
+  
 
   return (
     <>
       <div>
-        {pokemon.map((pokemon) => (
-          <pokeList key = {pokemon.id} name = {pokemon.name} imageURL = {pokemon.sprites.front_default}/>
+        {pokemonList.map((pokemon) => (
+          <PokeList pokemon = {pokemon} sprites = {pokemon.sprites}/>
         ))}
       </div>
-      <nextPrev
+      <NextPrev
         next={nextPage ? next:null}
         prev = {prevPage ? prev: null}
       />
     </>
   );
-}
+};
 
 export default App;
 

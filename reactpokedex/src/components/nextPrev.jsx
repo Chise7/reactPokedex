@@ -1,7 +1,7 @@
 import React from 'react'
-import "./nextPrev"
+// import "./nextPrev"
 
-export default function nextPrev({next, prev}){
+export default function NextPrev({next, prev}){
     return(
         <div>
             {next && <button onClick = {next}>Next</button>}
