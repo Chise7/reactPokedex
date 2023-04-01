@@ -15,6 +15,6 @@ const PokeList = ({ pokemon , sprites }) => {
 
 export default PokeList;
 
-function addTeam() {
+const addTeam = () => {
     console.log("IM WORKING");
 }
