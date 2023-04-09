@@ -34,59 +34,33 @@ function App(){
 
   const prev = () => setCurrPage(prevPage);
   
+  // <button onClick = {addTeam}>Add {pokemon.name} To Team</button>
+//   const addTeam = () => {
+//     alert("Added!")
+// }
+
+const test = () => alert("fortnite");
 
   return (
     <>
-      <div>
-        {pokemonList.map((pokemon) => (
-          <PokeList pokemon = {pokemon} sprites = {pokemon.sprites}/>
-        ))}
+      <div className = 'web-container'>
+        <div className='pokemon-card-container'>
+          {pokemonList.map((pokemon) => (
+            <PokeList pokemon = {pokemon} sprites = {pokemon.sprites}/>
+          ))}
+        </div>
+        <div className = 'team-container'>
+          <button onClick = {test} >Test</button>
+        </div>
       </div>
-      <NextPrev
-        next={nextPage ? next:null}
-        prev = {prevPage ? prev: null}
-      />
+      <div>
+        <NextPrev
+          prev = {prevPage ? prev: null}
+          next={nextPage ? next:null} 
+        />
+      </div>
     </>
   );
 };
 
 export default App;
-
-// function App() {
-//   const [pokemon, setPokemon] = useState([])
-  // const [currPage, setCurrPage] = useState("https://pokeapi.co/api/v2/pokemon")
-  // const [nextPage, setnextPage] = useState()
-  // const [prevPage, setPrevPage] = useState()
-//   const [loading, setLoad] = useState(true)
-
-//   useEffect(()=>{
-//     setLoading(true)
-//     let cancel
-//     axios.get(currPage,{cancelToken: new axios.cancelToken(c => cancel = c)}).then(res=>{ 
-//       setLoad(flase)
-//       setnextPage(res.data.next)
-//       setPrevPage(res.data.previous)
-//       setPokemon(res.data.results.map(p=>p.name)) })
-//       return () => cancel()
-//   }, [currPage])
-
-  // function next(){
-  //   setCurrPage(nextPage)
-  // }
-
-  // function prev(){
-  //   setPrevPage(prevPage)
-  // }
-
-//   if(loading) return "Loading..."
-  
-  // return (
-  //   <>
-  //     <list pokemon={pokemon}/>
-  //     <nextPrev
-  //       next={nextPage ? next:null}
-  //       prev = {prevPage ? prev: null}
-  //     />
-  //   </>
-  // );
-// }
