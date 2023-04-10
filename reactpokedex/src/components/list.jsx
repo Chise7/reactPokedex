@@ -1,13 +1,13 @@
 import React from 'react'
 import "./list.css";
 
-const PokeList = ({ pokemon , sprites }) => {
+const PokeList = (props) => {
     return(
         <div className = 'pokemon-card'>
-            <img src={sprites.front_default} alt = {pokemon.name}/>
-            <h2>{pokemon.name}</h2>
+            <img src={props.sprites.front_default} alt = {props.pokemon.name}/>
+            <h2>{props.pokemon.name}</h2>
             <div>
-                <button onClick = {addTeam}>Add {pokemon.name} To Team</button>
+                <button onClick = {props.onClick}>Add {props.pokemon.name} To Team</button>
             </div>
         </div>
     );
@@ -15,6 +15,8 @@ const PokeList = ({ pokemon , sprites }) => {
 
 export default PokeList;
 
-const addTeam = () => {
-    alert("Added!")
-}
+// const addTeam = () => {
+//     alert("Added!")
+// }
+
+// const PokeList = ({ pokemon , sprites}, props) => {

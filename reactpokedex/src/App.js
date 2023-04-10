@@ -2,6 +2,9 @@ import React, { useState, useEffect } from 'react';
 import PokeList from './components/list';
 import NextPrev from './components/nextPrev';
 import pokeTeam from './components/team';
+import { db } from './firebase'
+// import {set, update, onValue, remove, ref} from 'firebase/database'
+// import database from "./firebase"
 
 function App(){
   const [pokemonList, setPokemon] = useState([]);
