@@ -1,17 +1,16 @@
 import React, { useState, useEffect } from 'react';
 import PokeList from './components/list';
-import NextPrev from './components/nextPrev'
+import NextPrev from './components/nextPrev';
+import pokeTeam from './components/team';
 
 function App(){
   const [pokemonList, setPokemon] = useState([]);
   const [currPage, setCurrPage] = useState("https://pokeapi.co/api/v2/pokemon")
   const [nextPage, setnextPage] = useState("")
   const [prevPage, setPrevPage] = useState("")
-  
+  const [teamList, setTeam] = useState([]);
 
   useEffect(()=> {
-    // const pokeURL = "https://pokeapi.co/api/v2/pokemon"
-
     const getPokemon = async() => {
       const res = await fetch(currPage);
       const data = await res.json();
@@ -22,19 +21,15 @@ function App(){
         return pokeRes.json();
       }));
       setPokemon(pokeData);
-    // const { pokemon } = data;
     };
     getPokemon();
   },[currPage]);
-
-
- 
 
   const next = () => setCurrPage(nextPage);
 
   const prev = () => setCurrPage(prevPage);
   
-  // <button onClick = {addTeam}>Add {pokemon.name} To Team</button>
+// <button onClick = {addTeam}>Add {pokemon.name} To Team</button>
 //   const addTeam = () => {
 //     alert("Added!")
 // }
@@ -50,7 +45,9 @@ const test = () => alert("fortnite");
           ))}
         </div>
         <div className = 'team-container'>
-          <button onClick = {test} >Test</button>
+          {pokeTeam.map((team)=> (
+            <pokeTeam pokemon = {team} sprites = {team.sprites}/>
+          ))}
         </div>
       </div>
       <div>
