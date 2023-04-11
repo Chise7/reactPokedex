@@ -1,17 +1,18 @@
 import React, { useState, useEffect } from 'react';
 import PokeList from './components/list';
 import NextPrev from './components/nextPrev';
-import pokeTeam from './components/team';
+import PokeTeam from './components/team';
 import { db } from './firebase'
-// import {set, update, onValue, remove, ref} from 'firebase/database'
-// import database from "./firebase"
+import {onValue, ref, update, set} from 'firebase/database'
 
 function App(){
   const [pokemonList, setPokemon] = useState([]);
   const [currPage, setCurrPage] = useState("https://pokeapi.co/api/v2/pokemon")
   const [nextPage, setnextPage] = useState("")
   const [prevPage, setPrevPage] = useState("")
-  const [teamList, setTeam] = useState([]);
+  const [pokemonTeam, setTeam] = useState([]);
+  // const pokemonTeam = [];
+
 
   useEffect(()=> {
     const getPokemon = async() => {
@@ -28,29 +29,38 @@ function App(){
     getPokemon();
   },[currPage]);
 
+  const addTeam = async (pokemon) =>{
+    if (pokemonTeam.length < 6){
+      const dataRef = ref(db,'/added');
+      setTeam([...pokemonTeam, pokemon]);
+      const updatedTeam = {...pokemonTeam};
+      update(dataRef,updatedTeam);
+      alert("Added!")
+    }
+    else{
+      alert("You already have 6 pokemon!")
+    }
+  }
+
   const next = () => setCurrPage(nextPage);
 
   const prev = () => setCurrPage(prevPage);
-  
-// <button onClick = {addTeam}>Add {pokemon.name} To Team</button>
-//   const addTeam = () => {
-//     alert("Added!")
-// }
-
-const test = () => alert("fortnite");
 
   return (
     <>
       <div className = 'web-container'>
         <div className='pokemon-card-container'>
           {pokemonList.map((pokemon) => (
-            <PokeList pokemon = {pokemon} sprites = {pokemon.sprites}/>
+            <PokeList key = {pokemon.id} pokemon = {pokemon} sprites = {pokemon.sprites} addTeam = {addTeam}/>
           ))}
         </div>
         <div className = 'team-container'>
-          {pokeTeam.map((team)=> (
-            <pokeTeam pokemon = {team} sprites = {team.sprites}/>
-          ))}
+          <>
+            <div>Team:</div>
+            {pokemonTeam.map((team)=> (
+              <PokeTeam key = {team.id} pokemon = {team} sprites = {team.sprites}/>
+            ))}
+          </>
         </div>
       </div>
       <div>
