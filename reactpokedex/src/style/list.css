@@ -7,18 +7,20 @@
     flex-wrap: wrap;
     justify-content: space-around;
     width: 80%;
-    height: 90%;
+    height: 870px;
+    overflow-y:scroll;
 }
 .pokemon-card{
     width: 20%;
     color: #fff;
-    margin: .5rem;
-    margin-bottom: 2.5rem;
+    margin: .2rem;
+    margin-bottom: 1.2rem;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
     background-color: #111;
     padding: 1rem;
+    border-radius: 25px;
 }
 .pokemon-card img {
 	max-width: 100%;
@@ -27,12 +29,11 @@
     width: 40%;
     position: -webkit-sticky;
     position: sticky;
-    height: 90%;
+    height: 20%;
     top: 0;
     right: 0;
     
 }
-/* .pokemon-card img, */
-.pokemon-card h2{
+/* .pokemon-card h2{
     justify-content: space-between;
-}
+} */

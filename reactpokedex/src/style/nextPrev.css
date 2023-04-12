@@ -1,11 +1,25 @@
 .next-prev-container {
     display: flex;
-    justify-content: space-between;
-    margin-top: 20px;
+    justify-content: left;
+    margin-top: 10px;
     width: 100%;
   }
   
-  .next-prev-button {
+  .next-button {
+    background-color: #4CAF50;
+    border: none;
+    color: white;
+    padding: 10px 20px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    cursor: pointer;
+    border-radius: 5px;
+  }
+
+  .prev-button {
     background-color: #4CAF50;
     border: none;
     color: white;
@@ -19,6 +33,9 @@
     border-radius: 5px;
   }
   
-  .next-prev-button:hover {
+  .next-button:hover {
+    background-color: #3e8e41;
+  }
+  .prev-button:hover {
     background-color: #3e8e41;
   }

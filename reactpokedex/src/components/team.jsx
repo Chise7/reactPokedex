@@ -4,7 +4,7 @@ const PokeTeam = (props) => {
     return(
         <>
         <div>
-            {props.pokemon.id}
+            #{props.pokemon.id}
         </div>
         <div className = "team-member">
             <img src={props.sprites.front_default} alt = {props.pokemon.name}/>

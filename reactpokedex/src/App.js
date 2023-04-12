@@ -3,7 +3,7 @@ import PokeList from './components/list';
 import NextPrev from './components/nextPrev';
 import PokeTeam from './components/team';
 import { db } from './firebase'
-import {onValue, ref, update, set} from 'firebase/database'
+import {ref, update} from 'firebase/database'
 
 function App(){
   const [pokemonList, setPokemon] = useState([]);
@@ -11,7 +11,7 @@ function App(){
   const [nextPage, setnextPage] = useState("")
   const [prevPage, setPrevPage] = useState("")
   const [pokemonTeam, setTeam] = useState([]);
-
+  
   useEffect(()=> {
     const getPokemon = async() => {
       const res = await fetch(currPage);
@@ -40,31 +40,40 @@ function App(){
     }
   }
 
-  const next = () => setCurrPage(nextPage);
+  const next = () => {
+    setCurrPage(nextPage);
+  }
 
-  const prev = () => setCurrPage(prevPage);
+  const prev = () => {
+    setCurrPage(prevPage);
+  }
 
   return (
     <>
       <div className = 'web-container'>
         <div className='pokemon-card-container'>
           {pokemonList.map((pokemon) => (
-            <PokeList key = {pokemon.id} pokemon = {pokemon} sprites = {pokemon.sprites} addTeam = {addTeam}/>
+            <PokeList key = {pokemon.id} 
+            pokemon = {pokemon} 
+            sprites = {pokemon.sprites} 
+            addTeam = {addTeam}/>
           ))}
         </div>
         <div className = 'team-container'>
           <>
             <div>Team:</div>
             {pokemonTeam.map((team)=> (
-              <PokeTeam key = {team.id} pokemon = {team} sprites = {team.sprites}/>
+              <PokeTeam key = {team.id} 
+              pokemon = {team} 
+              sprites = {team.sprites}/>
             ))}
           </>
         </div>
       </div>
       <div>
         <NextPrev
-          prev = {prevPage ? prev: null}
-          next={nextPage ? next:null} 
+          prev = {prevPage ? prev : null}
+          next = {nextPage ? next : null} 
         />
       </div>
     </>
