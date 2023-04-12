@@ -1,13 +1,10 @@
 import React from 'react'
-import "./team.css";
-// import { db } from '../firebase'
-// import {onValue, ref} from 'firebase/database'
-
+import "../style/team.css";
 const PokeTeam = (props) => {
     return(
         <>
         <div>
-            Current Team
+            {props.pokemon.id}
         </div>
         <div className = "team-member">
             <img src={props.sprites.front_default} alt = {props.pokemon.name}/>

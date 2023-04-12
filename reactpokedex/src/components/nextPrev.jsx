@@ -1,5 +1,5 @@
 import React from 'react'
-import "./nextPrev";
+import "../style/nextPrev.css";
 
 export default function NextPrev({next, prev}){
     return(

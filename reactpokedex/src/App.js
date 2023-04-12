@@ -11,8 +11,6 @@ function App(){
   const [nextPage, setnextPage] = useState("")
   const [prevPage, setPrevPage] = useState("")
   const [pokemonTeam, setTeam] = useState([]);
-  // const pokemonTeam = [];
-
 
   useEffect(()=> {
     const getPokemon = async() => {

@@ -1,9 +1,5 @@
 import React from 'react'
-import "./list.css";
-// import { db } from '../firebase'
-// import {update, onValue, ref} from 'firebase/database'
-// const pokemonTeam = [];
-
+import "../style/list.css";
 
 const PokeList = (props) => {
   return(
