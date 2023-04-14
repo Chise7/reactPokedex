@@ -7,7 +7,7 @@ const PokeList = (props) => {
           <img src={props.sprites.front_default} alt = {props.pokemon.name}/>
           <h2>{props.pokemon.name}</h2>
           <div>
-              <button onClick = {() => props.addTeam(props.pokemon)}>Add {props.pokemon.name} To Team</button>
+              <button className = 'list-button' onClick = {() => props.addTeam(props.pokemon)}>Add {props.pokemon.name} To Team</button>
           </div>
       </div>
   );

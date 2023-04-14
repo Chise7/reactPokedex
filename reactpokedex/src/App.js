@@ -33,7 +33,7 @@ function App(){
       setTeam([...pokemonTeam, pokemon]);
       const updatedTeam = {...pokemonTeam};
       update(dataRef,updatedTeam);
-      alert("Added!")
+      // alert("Added!")
     }
     else{
       alert("You already have 6 pokemon!")
