@@ -24,6 +24,9 @@
     padding: 1rem;
     border-radius: 25px;
 }
+.pokemon-card h2{
+    color: rgb(61, 61, 163);
+}
 .pokemon-card img {
 	max-width: 100%;
 }
@@ -42,9 +45,9 @@
     border-radius: 5px;
   }
   
-  .list-button:hover {
-    background-color: #3e8e41;
-  }
+.list-button:hover {
+background-color: #3e8e41;
+}
 
 .pokemon-card:hover{
     background-color: rgb(92, 92, 92);
